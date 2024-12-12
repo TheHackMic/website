@@ -1,0 +1,95 @@
+/* styles.css */
+
+body {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: #0a0f22;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ff8c37;
+    padding: 1rem 2rem;
+    color: #0a0f22;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #0a0f22;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, #ff8c37, #ff3b9d);
+}
+
+.hero h1 span {
+    color: #0a0f22;
+}
+
+.cta-button {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #0a0f22;
+    color: #ff8c37;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.episodes, .hosts, .about, .contact, .connect {
+    padding: 2rem;
+    background-color: #0e1428;
+    margin: 2rem 0;
+}
+
+.episode-list, .host-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.episode, .host {
+    background-color: #182240;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #ffffff;
+    flex: 1 1 calc(45% - 1rem);
+}
+
+.connect-options a {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #ff3b9d;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #0a0f22;
+    color: #ffffff;
+}
