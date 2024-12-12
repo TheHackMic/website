@@ -2,15 +2,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log("TheHackMic website loaded successfully!");
-
     const playButtons = document.querySelectorAll('.episode button');
-    playButtons.forEach(button => {
+    playButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            alert('Playing episode...'); 
+            const episodeLink = button.getAttribute('data-link');
+            if (episodeLink) {
+                window.open(episodeLink, '_blank'); 
+            } else {
+                alert('No link specified for this episode.');
+            }
         });
     });
 
-    // hc flag
+    // Hack Club flag
     const navBar = document.querySelector('.navbar');
     if (navBar) {
         const flag = document.createElement('img');
@@ -20,9 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navBar.prepend(flag);
     }
 
-    const body = document.body;
-    body.style.transition = 'all 0.3s ease-in-out';
-
+    
     const buttons = document.querySelectorAll('button, .cta-button');
     buttons.forEach(button => {
         button.style.transition = 'background-color 0.3s, color 0.3s';
@@ -33,6 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('mouseout', () => {
             button.style.backgroundColor = '';
             button.style.color = '';
+        });
+    });
+
+    
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 });
