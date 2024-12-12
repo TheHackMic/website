@@ -51,3 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function scrollAbout() {
+
+    const about = document.getElementById("about"); 
+  
+    about.scrollIntoView({ behavior: 'smooth' });  
+  
+  }
