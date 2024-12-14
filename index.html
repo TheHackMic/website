@@ -17,8 +17,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            
         }
-
+        ::-webkit-scrollbar {
+            display: none;
+        }
         .navbar {
             background-color: #222;
             color: white;
@@ -253,11 +256,50 @@
         .spotify-link:hover{
             background-color: #d02a44;
         }
+        .new-ep{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 7vh;
+            background-color: #ec3750;
+            color: white;
+            font-size: 3vh;
+            /* display: none; */
+          }
+          .new-ep a{
+            text-decoration: none;
+            color: white;
+          }
+          .icon {
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 32px;
+            position: relative;
+       }
+       
+        @media (max-width: 600px) {
+
+            .navbar {
+          
+              display: none;
+          
+            }
+            .new-ep{
+                display: none;
+            }
+          
+          } 
+          
+
     </style>
 </head>
 <body>
+
+    <div class="new-ep">
+        New Episode dropped with xyz!!! ,<a href="xyz.com">  Watch it at - xyz.com</a>
+    </div>
     <header class="navbar">
-        <div class="logo">🎤 TheHackMic</div>
+        <div class="logo"><img src="imgs\logo.png" style="height: 8vh;"></div>
         <nav>
             <ul>
                 <li><a href="#episodes">Episodes</a></li>
@@ -270,8 +312,9 @@
 
     <section class="hero">
         <h1>Welcome to <span class="underl" onclick="scrollAbout()">TheHackMic</span>!</h1>
+        <div class="buttons-cont">
         <a href="#episodes" class="cta-button">🎧 Dive into the Episodes</a>
-        <a href="https://open.spotify.com" target="_blank" class="spotify-link">🎵 Listen on Spotify</a>    
+        <a href="https://open.spotify.com" target="_blank" class="spotify-link">🎵 Listen on Spotify</a>    </div>
     </section>
 
     <section id="episodes" class="episodes">
