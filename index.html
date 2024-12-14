@@ -256,21 +256,7 @@
         .spotify-link:hover{
             background-color: #d02a44;
         }
-        @media (max-width: 600px) {
-
-            .navbar {
-          
-              display: none;
-          
-            }
-            .new-ep{
-                display:none;
-            }
-                
-          
-          } 
-          
-          .new-ep{
+        .new-ep{
             display: flex;
             align-items: center;
             justify-content: center;
@@ -291,6 +277,20 @@
             position: relative;
        }
        
+        @media (max-width: 600px) {
+
+            .navbar {
+          
+              display: none;
+          
+            }
+            .new-ep{
+                display: none;
+            }
+          
+          } 
+          
+
     </style>
 </head>
 <body>
@@ -299,7 +299,7 @@
         New Episode dropped with xyz!!! ,<a href="xyz.com">  Watch it at - xyz.com</a>
     </div>
     <header class="navbar">
-        <div class="logo"><img src="imgs/logo.png" style="height: 8vh;"></div>
+        <div class="logo"><img src="imgs\logo.png" style="height: 8vh;"></div>
         <nav>
             <ul>
                 <li><a href="#episodes">Episodes</a></li>
