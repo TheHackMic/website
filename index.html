@@ -289,8 +289,26 @@
             }
           
           } 
-          
+          .flag img
+          {
+            left: 0;
+            height: 10vh;
+            transform: rotate(90deg);
+            position: absolute;
+            transition: margin-top 0.3s ease;
 
+
+          }
+          .navflag-container{
+            position: sticky;
+            background-color: #f4f4f4;
+            position: relative;
+          }
+          .flag img:hover{
+            margin-top: 3.5vh;
+
+
+          }
     </style>
 </head>
 <body>
@@ -298,8 +316,11 @@
     <div class="new-ep">
         New Episode dropped with xyz!!! ,<a href="xyz.com">  Watch it at - xyz.com</a>
     </div>
+    <div class="navflag-container">
     <header class="navbar">
+
         <div class="logo"><img src="imgs\logo.png" style="height: 8vh;"></div>
+
         <nav>
             <ul>
                 <li><a href="#episodes">Episodes</a></li>
@@ -309,7 +330,8 @@
             </ul>
         </nav>
     </header>
-
+    <div class="flag"><a href="https://hackclub.com/"><img src="https://assets.hackclub.com/flag-orpheus-left.svg"></a></div>
+</div>
     <section class="hero">
         <h1>Welcome to <span class="underl" onclick="scrollAbout()">TheHackMic</span>!</h1>
         <div class="buttons-cont">
