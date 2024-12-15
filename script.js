@@ -14,16 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Hack Club flag
-    const navBar = document.querySelector('.navbar');
-    if (navBar) {
-        const flag = document.createElement('img');
-        flag.src = 'https://assets.hackclub.com/flag-orpheus-left.svg';
-        flag.alt = 'Hack Club Flag';
-        flag.style.height = '40px';
-        navBar.prepend(flag);
-    }
-
     
     const buttons = document.querySelectorAll('button, .cta-button');
     buttons.forEach(button => {
