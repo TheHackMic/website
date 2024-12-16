@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log("TheHackMic website loaded successfully!");
     const playButtons = document.querySelectorAll('.episode button');
@@ -14,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    
+
     const buttons = document.querySelectorAll('button, .cta-button');
     buttons.forEach(button => {
         button.style.transition = 'background-color 0.3s, color 0.3s';
@@ -40,12 +38,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeDesc();
+        }
+    });
 });
 
 function scrollAbout() {
-
     const about = document.getElementById("about"); 
-  
-    about.scrollIntoView({ behavior: 'smooth' });  
-  
-  }
+    about.scrollIntoView({ behavior: 'smooth' });    
+}
+
+function openDesc(el) {
+    document.getElementById("descModal").classList.remove("hide");
+    document.getElementById("descModal").classList.add("show");
+    document.getElementById("epTitle").innerHTML = el.getElementsByTagName('h3')[0].innerText;
+    document.getElementById("epDesc").innerHTML = el.getAttribute('data-epDesc');
+}
+
+function closeDesc() {
+    document.getElementById("descModal").classList.remove("show");
+    setTimeout(() => {
+        document.getElementById("descModal").classList.add("hide");
+    }, 300);
+}
