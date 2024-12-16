@@ -6,7 +6,20 @@
     <title>TheHackMic</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=close" />
     <style>
+        .latest-episode {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* background-color: #f4f4f4; */
+            iframe {
+                width: 80%;
+                max-width: 540px; /* 500+40, to match with episode card, incl padding */
+            }
+        }
         @font-face {
             font-family: 'phantom-hc';
             src: url('phantom-hc.ttf');
@@ -32,12 +45,16 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            height: 5vh;
         }
 
         .navbar .logo {
             font-size: 1.5em;
             margin-right: auto;
             padding-left: 20px;
+            img {
+                height: 5.5vh;
+            }
         }
 
         .navbar nav ul {
@@ -55,8 +72,8 @@
         .navbar nav ul li a {
             color: white;
             text-decoration: none;
-            font-weight: 700;
             padding: 5px 15px;
+            font-size: large;
         }
 
         .navbar nav ul li a:hover {
@@ -70,7 +87,9 @@
                 background-color: #222;
             }
             to
-            {background-color: #ec3750;}
+            {
+                background-color: #ec3750;
+            }
         }
         .hero {
             text-align: center;
@@ -80,8 +99,7 @@
 
         .hero h1 {
             font-size: 3em;
-            margin-bottom: 10px;
-            margin-bottom: 10vh;
+            margin-bottom: 5vh;
         }
         
         .hero span {
@@ -122,6 +140,7 @@
             max-width: 500px;
             box-shadow: 0px 0px 48px 8px #00000038;
             transition: all 0.2s ease-in-out;
+            cursor: pointer;
         }
 
         .episode:hover {
@@ -169,7 +188,9 @@
         .host {
             text-align: center;
             width: 200px;
-            /* max-width: 300px; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             padding: 24px;
             aspect-ratio: 1/1;
             transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -206,7 +227,7 @@
         }
 
         .about, .connect {
-            padding: 50px 20px;
+            padding: 20px 20px;
             text-align: center;
         }
 
@@ -217,13 +238,20 @@
             padding: 20px;
         }
 
+        .connect-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
         .connect-options a {
-            display: inline-block;
+            display: flex;
             color: white;
             text-decoration: none;
             background-color: #ec3750;
             padding: 10px 20px;
             margin: 10px;
+            width: fit-content;
             border-radius: 5px;
         }
 
@@ -260,11 +288,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 7vh;
+            height: 3.5vh;
             background-color: #ec3750;
             color: white;
-            font-size: 3vh;
-            /* display: none; */
+            font-size: 2vh;
           }
           .new-ep a{
             text-decoration: none;
@@ -301,26 +328,92 @@
           }
           .navflag-container{
             position: sticky;
+            width: 100%;
             background-color: #f4f4f4;
-            position: relative;
+            z-index: 99999;
+            top: 0;
           }
           .flag img:hover{
             margin-top: 3.5vh;
-
-
           }
+          .silhouette {
+            width: 128px;
+            height: 128px;
+          }
+        .description{
+            display: none;
+            position: fixed;
+            z-index: 999999;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 800px;
+            min-height: 300px;
+            box-shadow: 0px 0px 48px 8px #00000038;
+            transition: all 0.2s ease-in-out;
+        }
+
+        @keyframes showDescBox {
+            from {
+                opacity: 0;
+                scale: 0.5;
+            }
+            to {
+                opacity: 1;
+                scale: 1;
+            }
+        }
+        
+        .description.show {
+            animation: showDescBox 0.2s ease-in-out;
+            display: block;
+        }
+
+        @keyframes hideDescBox {
+            from {
+                opacity: 1;
+                display: block;
+                scale: 1;
+            }
+            to {
+                opacity: 0;
+                display: none;
+                scale: 0.8;
+            }
+        }
+
+        .description.hide {
+            animation: hideDescBox 0.2s ease-in-out;
+            display: none;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-
-    <div class="new-ep">
-        New Episode dropped with xyz!!! ,<a href="xyz.com">  Watch it at - xyz.com</a>
+    <div class="description hide" id="descModal">
+        <span class="material-symbols-outlined close-button" onclick="closeDesc()">
+            close
+        </span>
+        <h2 id="epTitle">Episode Title</h2>
+        <h3>Episode Description</h3>
+        <p id="epDesc"></p>
     </div>
+
     <div class="navflag-container">
+        <div class="new-ep">
+            First episode with @jps (Jared, Club Operations Lead) out now!!</a>
+        </div>
     <header class="navbar">
-
-        <div class="logo"><img src="imgs\logo.png" style="height: 8vh;"></div>
-
+        <div class="logo"><img src="imgs/logo.png"></div>
         <nav>
             <ul>
                 <li><a href="#episodes">Episodes</a></li>
@@ -331,28 +424,30 @@
         </nav>
     </header>
     <div class="flag"><a href="https://hackclub.com/"><img src="https://assets.hackclub.com/flag-orpheus-left.svg"></a></div>
-</div>
+    </div>
     <section class="hero">
         <h1>Welcome to <span class="underl" onclick="scrollAbout()">TheHackMic</span>!</h1>
         <div class="buttons-cont">
-        <a href="#episodes" class="cta-button">🎧 Dive into the Episodes</a>
-        <a href="https://open.spotify.com" target="_blank" class="spotify-link">🎵 Listen on Spotify</a>    </div>
+        <a href="#episodes" class="cta-button">Episodes</a>
+    </div>
     </section>
-
+    <section class="latest-episode">
+        <h2>Latest episode!</h2>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/06SqujqEPei650xY8cjDKs?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </section>
     <section id="episodes" class="episodes">
         <h2>Episodes</h2>
         <div class="episode-list">
-            <div class="episode">
-                <h3>Episode 1: Clubs</h3>
-                <p>Info Here!.</p>
-                <button data-link="https://open.spotify.com/show/your-episode-link">Play Now</button>
+            <div class="episode" onclick="openDesc(this)" data-epDesc="🌍 What's it like to lead a global community of hackers? Tune in to our latest episode of The Hack Mic podcast to find out! 🎙️ Jared shares his journey, challenges, and secrets to managing a thousand club members. Listen now!">
+                <h3 class="episode__content">01: Stories from the club with Jared</h3>
+                <p class="episode__content">On the first episode we're joined by Jared the Clubs Operation Lead over at Hack Club!</p>
+                <button data-link="https://open.spotify.com/episode/2vN4Wa7m1jRo6zh1WSBiBc">Play Now</button>
             </div>
-            <div class="episode">
+            <!-- <div class="episode">
                 <h3>Episode 2: Leaders</h3>
                 <p>Info here!</p>
                 <button data-link="https://open.spotify.com/show/your-episode-link">Play Now</button>
-            </div>
-            <!-- Add more episodes here -->
+            </div> -->
         </div>
     </section>
 
@@ -360,17 +455,18 @@
         <h2>Meet the Hosts</h2>
         <div class="host-list">
             <div class="host">
-                <img src='https://ca.slack-edge.com/T0266FRGM-U020X4GCWSF-00ad5b3feb80-256' alt="Host Name">
+                <img src='https://ca.slack-edge.com/T0266FRGM-U020X4GCWSF-00ad5b3feb80-256' alt="Rrr">
                 <h3>Rushil C (@Rrr)</h3>
                 <p>Super cool dude.</p>
                 <div class="socials">
-                    <a href="#">GitHub</a>
+                    <a href="https://github.com/WolfGamer2" target="_blank">GitHub</a>
                 </div>
             </div>
             <div class="host">
-                <img src="host2.jpg" alt="Host Name">
-                <h3>Host Name 2</h3>
-                <p>Short bio about this host and their expertise.</p>
+                <!-- <img src="" alt="Host Name"> -->
+                <img src="https://icons.veryicon.com/png/o/internet--web/55-common-web-icons/person-4.png" alt="Host Name 2">
+                <h3>Coming soon</h3>
+                <p>Stay tuned!</p>
                 <div class="socials">
                     <a href="#">GitHub</a>
                 </div>
@@ -387,8 +483,7 @@
     <section id="connect" class="connect">
         <h2>Connect with Us</h2>
         <div class="connect-options">
-
-            <a href="https://hackclub.slack.com" target="_blank" class="slack-link">💬 Join Hack Club Slack</a>
+            <a href="https://hackclub.slack.com" target="_blank" class="slack-link"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/16px-Slack_icon_2019.svg.png" style="margin: 2px;"/> Join Hack Club Slack</a>
         </div>
     </section>
 
