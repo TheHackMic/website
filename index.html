@@ -226,6 +226,10 @@
             margin: 0 5px;
         }
 
+        .socials a:hover {
+            color: #d02a44;
+        }
+
         .about, .connect {
             padding: 20px 20px;
             text-align: center;
@@ -238,6 +242,12 @@
             padding: 20px;
         }
 
+        .footer a {
+            color: #ec3750;
+        }
+        .footer a:hover {
+            color: #d02a44;
+        }        
         .connect-options {
             display: flex;
             justify-content: center;
@@ -295,6 +305,11 @@
           }
           .new-ep a{
             text-decoration: none;
+            color: white;
+          }
+          .new-ep a:hover{
+            text-decoration: underline;
+            cursor: pointer; 
             color: white;
           }
           .icon {
@@ -396,12 +411,6 @@
             right: 10px;
             cursor: pointer;
         }
-        a {
-            color: #ec3750;
-        }
-        a:hover {
-            color: #d02a44;
-        }
     </style>
 </head>
 <body>
@@ -416,7 +425,7 @@
 
     <div class="navflag-container">
         <div class="new-ep">
-            <a href="#episodes">Episode Eight - February Monthly Recap out now!!</a>
+            <a href="#episodes">Episode Ten - April Monthly Recap out now!!</a>
         </div>
     <header class="navbar">
         <div class="logo"><img src="imgs/logo.png"></div>
@@ -444,15 +453,15 @@
     <section id="episodes" class="episodes">
         <h2>Episodes</h2>
         <div class="episode-list">
-            <div class="episode" onclick="openDesc(this)" data-epDesc="A brand-new monthly recap podcast hosted by Freddie. In this episode, we take a look at what’s been happening across Hack Club this January - from Overglade in Singapore to barking dogs, extended Blueprints, custom game consoles, and the early buzz around Campfire. Listen now!">
-                <h3 class="episode__content">07: Blueprints, Consoles & Campfires</h3>
-                <p class="episode__content">A brand-new monthly recap podcast hosted by Freddie.</p>
-                <button data-link="https://open.spotify.com/episode/2vN4Wa7m1jRo6zh1WSBiBc">Play Now</button>
+            <div class="episode">
+                <h3 class="episode__content">09: Interns, Embers and Resolutions</h3>
+                <p class="episode__content">Join us for the March Hack Club Recap, hosted by Freddie. This time we take a look at all the new events and Slack news around the community from the past month!</p>
+                <button data-link="https://open.spotify.com/episode/2iIKVVvyUqdNsEKP9MRRmd">Play Now</button>
             </div>
-            <div class="episode" onclick="openDesc(this)" data-epDesc="The February Hack Club Recap, hosted by Freddie. This time we dive into Campfire and Campfire Flagship as well as taking a look at the upcoming events Hack Club is running, all around the world!">
-                <h3 class="episode__content">08: Hackathons, Hackathons and a few more Hackathons!</h3>
-                <p class="episode__content">The February Hack Club Recap.</p>
-                <button data-link="https://open.spotify.com/episode/5Y5en0eC7520AKV5ow5JOT">Play Now</button>
+            <div class="episode" onclick="openDesc(this)" data-epDesc="A slightly late episode of the monthly Hack Club Recap with everything from updates on the NASA partnership, White House visit and Wikipedia drama! Hosted by Freddie, in a few short minutes get a quick update on the Hack Club News!">
+                <h3 class="episode__content">10: NASA partnerships, White House visits and Wikipedia drama</h3>
+                <p class="episode__content">A slightly late episode of the April Hack Club Recap</p>
+                <button data-link="https://open.spotify.com/episode/0KEXFMRHrvByTst5isFhBV">Play Now</button>
             </div>
         </div>
     </section>
